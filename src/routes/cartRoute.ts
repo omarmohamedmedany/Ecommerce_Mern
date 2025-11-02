@@ -30,8 +30,8 @@ router.post('/items', validateJWT, async (req: ExtendRequest, res) => {
 
 router.put("/items", validateJWT, async (req: ExtendRequest, res) => {
   const userId = req?.user?._id;
-  const { productId, quantity } = req.body;
-  const response = await updateItemInCart({ userId, productId, quantity })
+  const { product, quantity } = req.body;
+  const response = await updateItemInCart({ userId, productId: product, quantity })
   res.status(response.statusCode).send(response.data)
 })
 
